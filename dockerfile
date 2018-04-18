@@ -1,11 +1,6 @@
-#this dockerfile will help to install drupal7
-#the image is going to be ubuntu
-FROM ubuntu
-#now to install packages
-RUN apt-get update && apt-get -y install --no-install-recommends apache2 \
-php-mysql \
-nano \
-rm -rf /var/lib/apt/lists/*
-#now I'm going to include the drupal files
-ADd drupal-7.58/ /var/www/html
+#this file is going to be from the chriskalmar/drupal7 image
+FROM chriskalmar/drupal7
+#now changing file permissions to allow for drupal instalation
+RUN chown -R www-data:www-data /var/www/html/ \
+chmod -R 775 /var/www/html/
 
